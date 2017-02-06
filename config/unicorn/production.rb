@@ -10,7 +10,8 @@ worker_processes Integer(3)
 timeout 30
 preload_app true
 
-listen '/tmp/unicorn.rails_sp.sock', backlog: 64
+# listen '/tmp/unicorn.rails_sp.sock', backlog: 64
+listen '/var/sockets/unicorn.rails_sp.sock', backlog: 64
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
