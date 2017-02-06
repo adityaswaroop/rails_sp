@@ -3,10 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "ec2-35-154-132-137.ap-south-1.compute.amazonaws.com", user: 'ubuntu', roles: %w{app db web}, my_property: :my_value
-set :deploy_to, "/var/www/html/rails_sp"
-set :branch, "master"
-set :use_sudo, true
+# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
@@ -23,6 +20,29 @@ set :use_sudo, true
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
+
+set :port, 22
+set :user, 'ubuntu'
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+server 'ec2-35-154-61-32.ap-south-1.compute.amazonaws.com',
+       roles: [:web, :app, :db],
+       port: fetch(:port),
+       user: fetch(:user),
+       primary: true
+
+set :deploy_to, "/home/#{fetch(:user)}/myapp/#{fetch(:application)}"
+
+set :ssh_options, {
+                    keys: %w(/home/administrator/.ssh/Aditya_dream_aws.pem),
+                    forward_agent: true,
+                    auth_methods: %w(publickey),
+                    user: 'ubuntu',
+                }
+
+set :rails_env, :production
+set :conditionally_migrate, true
 
 
 
@@ -44,9 +64,11 @@ set :use_sudo, true
 #
 # Global options
 # --------------
- set :ssh_options, {
-   keys: %w(/home/administrator/.ssh/Aditya_dream_aws.pem)
- }
+#  set :ssh_options, {
+#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    forward_agent: false,
+#    auth_methods: %w(password)
+#  }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
