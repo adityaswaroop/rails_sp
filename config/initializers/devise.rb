@@ -58,9 +58,10 @@ Devise.setup do |config|
       settings.assertion_consumer_logout_service_binding  = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
       settings.issuer                                     = "http://35.154.154.107/users/saml/metadata"
       settings.idp_entity_id                              = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/MD"
-      settings.idp_sso_target_url                         = "http://login.craneww:3001/saml/auth"
+      settings.idp_sso_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SSO/REDIR"
+      settings.idp_slo_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SLO_RESPONSE/REDIR"
       settings.name_identifier_format                     = "urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress"
-      settings.assertion_consumer_logout_service_url      = "http://35.154.154.107/users/saml/idp_sign_out"
+      # settings.assertion_consumer_logout_service_url      = "http://35.154.154.107/users/saml/idp_sign_out"
       settings.idp_cert                                    = "MIIC9DCCAl2gAwIBAgIBDTANBgkqhkiG9w0BAQQFADCBkzELMAkGA1UEBhMCVVMx
 ETAPBgNVBAgTCE5ldyBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazEXMBUGA1UEChMO
 QXRyaWNvcmUsIEluYy4xDjAMBgNVBAsTBUpPU1NPMRUwEwYDVQQDEwxhdHJpY29y
@@ -78,6 +79,18 @@ AQQFAAOBgQCXV23LQ0afCLLF9Lzy0805TuvmGGnCFuE6Nn3flKWePuAtnMCVNqgA
 whsHD1KsXnUNRFFQHWEEUY5WLIpNUjkvhc+ZDS8KufcYQJi9OpKA+R/vx7cIVhwV
 8RPdRpJBdkZ2Wl/qBrQhiAJP/rmi1eshf2CYyy9oqto3z2Pr7xhAsQ=="
   end
+
+
+
+  # assertion_consumer_service_url: "http://localhost:3000/users/saml/auth",
+  # assertion_consumer_service_binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+  # name_identifier_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
+  # issuer: "http://localhost:3000/saml/metadata",
+  # idp_entity_id: "http://www.example_idp_entity_id.com",
+  # authn_context: "",
+  # idp_slo_target_url: "http://example_idp_slo_target_url.com",
+  # idp_sso_target_url: "http://example_idp_sso_target_url.com",
+  # idp_cert: "example_idp_cert"
 
 
   # Tell if authentication through request.params is enabled. True by default.
