@@ -53,13 +53,13 @@ Devise.setup do |config|
   config.saml_session_index_key = :session_index
   config.saml_use_subject = true
   config.saml_configure do |settings|
-      settings.assertion_consumer_service_url             = "http://rails-new-cview:3000/users/saml/auth"
+      settings.assertion_consumer_service_url             = "http://35.154.154.107/users/saml/auth"
       settings.assertion_consumer_service_binding         = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
       settings.assertion_consumer_logout_service_binding  = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-      settings.issuer                                     = "http://rails-new-cview:3000/"
+      settings.issuer                                     = "http://35.154.154.107/"
       settings.idp_sso_target_url                         = "http://login.craneww:3001/saml/auth"
       settings.name_identifier_format                     = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
-      settings.assertion_consumer_logout_service_url      = "http://rails-new-cview:3000/users/saml/idp_sign_out"
+      settings.assertion_consumer_logout_service_url      = "http://35.154.154.107/users/saml/idp_sign_out"
       settings.idp_cert_fingerprint                       = "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D"
   end
 
