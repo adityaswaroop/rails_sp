@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   get 'home/index'
 
-  devise_for :users, controllers: { saml_sessions: "users/saml_sessions"}
+  # devise_for :users, controllers: { saml_sessions: "users/saml_sessions"}
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :posts
-  
+
+
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
   
   root :to => 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

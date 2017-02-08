@@ -49,36 +49,40 @@ Devise.setup do |config|
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
   config.strip_whitespace_keys = [:email]
-  config.saml_default_user_key = :email
-  config.saml_session_index_key = :session_index
-  config.saml_use_subject = true
-  config.saml_configure do |settings|
-      settings.assertion_consumer_service_url             = "http://35.154.154.107/users/saml/auth"
-      settings.assertion_consumer_service_binding         = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-      settings.assertion_consumer_logout_service_binding  = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-      settings.issuer                                     = "http://35.154.154.107/users/saml/metadata"
-      settings.idp_entity_id                              = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/MD"
-      settings.idp_sso_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SSO/REDIR"
-      settings.idp_slo_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SLO_RESPONSE/REDIR"
-      settings.name_identifier_format                     = "urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress"
-      # settings.assertion_consumer_logout_service_url      = "http://35.154.154.107/users/saml/idp_sign_out"
-      settings.idp_cert                                    = "MIIC9DCCAl2gAwIBAgIBDTANBgkqhkiG9w0BAQQFADCBkzELMAkGA1UEBhMCVVMx
-ETAPBgNVBAgTCE5ldyBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazEXMBUGA1UEChMO
-QXRyaWNvcmUsIEluYy4xDjAMBgNVBAsTBUpPU1NPMRUwEwYDVQQDEwxhdHJpY29y
-ZS5jb20xHjAcBgkqhkiG9w0BCQEWD2NhQGF0cmljb3JlLmNvbTAeFw0xMzEyMTYx
-OTE1MTVaFw0xNDEyMTYxOTE1MTVaMGgxCzAJBgNVBAYTAlVTMQ4wDAYDVQQIEwVU
-ZXhhczEQMA4GA1UEChMHY3JhbmV3dzEUMBIGA1UECxMLY3JhbmV3dy1zc28xITAf
-BgNVBAMTGGVwcC10ZXN0LXNzby5jcmFuZXd3LmNvbTCCASIwDQYJKoZIhvcNAQEB
-BQADggEPADCCAQoCggEBAI9SfiRoiPwrnAxgd431rs4q9cKRkT09d74CaClqj2QJ
-p74I8sG7nPVOTUq6WpE+VV13NWToRIqgxLZMiIBiLm9OjUBU4Sc8wXXMHXa9ZJUg
-Lt3YV+tEblAEe+mR+6zoBfxyuArk2QUsIwi/8HCRjqW/eKA/0ewAppRS1VxermQk
-5y1HYaHsl2xWl5d2jPz8UbNPcq974hkHI09+LMauP9Hz54OsVKwn36I6rcniPGlo
-hsHcife34jewF+7NW7ILs+9X0TpcLnaGCLOx4CmDqTSpciAb8mQt+Er2bIgWR3D6
-IK/SjWvpb6/8xssLk8rXZi/RnE7fhG16AAq5X+JQVzUCAwEAATANBgkqhkiG9w0B
-AQQFAAOBgQCXV23LQ0afCLLF9Lzy0805TuvmGGnCFuE6Nn3flKWePuAtnMCVNqgA
-whsHD1KsXnUNRFFQHWEEUY5WLIpNUjkvhc+ZDS8KufcYQJi9OpKA+R/vx7cIVhwV
-8RPdRpJBdkZ2Wl/qBrQhiAJP/rmi1eshf2CYyy9oqto3z2Pr7xhAsQ=="
-  end
+
+  # config.omniauth :saml, "APP_ID", "APP_SECRET", callback_url: "CALLBACK_URL"
+  config.omniauth :saml, idp_cert_fingerprint: 'BE DE AF 95 29 9B 00 04 7C 8A D7 45 C4 5D A3 87 6B 4B 37 C9', idp_sso_target_url: 'https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SSO/REDIR'
+
+#   config.saml_default_user_key = :email
+#   config.saml_session_index_key = :session_index
+#   config.saml_use_subject = true
+#   config.saml_configure do |settings|
+#       settings.assertion_consumer_service_url             = "http://35.154.154.107/users/saml/auth"
+#       settings.assertion_consumer_service_binding         = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+#       settings.assertion_consumer_logout_service_binding  = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+#       settings.issuer                                     = "http://35.154.154.107/users/saml/metadata"
+#       settings.idp_entity_id                              = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/MD"
+#       settings.idp_sso_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SSO/REDIR"
+#       settings.idp_slo_target_url                         = "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SLO_RESPONSE/REDIR"
+#       settings.name_identifier_format                     = "urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress"
+#       # settings.assertion_consumer_logout_service_url      = "http://35.154.154.107/users/saml/idp_sign_out"
+#       settings.idp_cert                                    = "MIIC9DCCAl2gAwIBAgIBDTANBgkqhkiG9w0BAQQFADCBkzELMAkGA1UEBhMCVVMx
+# ETAPBgNVBAgTCE5ldyBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazEXMBUGA1UEChMO
+# QXRyaWNvcmUsIEluYy4xDjAMBgNVBAsTBUpPU1NPMRUwEwYDVQQDEwxhdHJpY29y
+# ZS5jb20xHjAcBgkqhkiG9w0BCQEWD2NhQGF0cmljb3JlLmNvbTAeFw0xMzEyMTYx
+# OTE1MTVaFw0xNDEyMTYxOTE1MTVaMGgxCzAJBgNVBAYTAlVTMQ4wDAYDVQQIEwVU
+# ZXhhczEQMA4GA1UEChMHY3JhbmV3dzEUMBIGA1UECxMLY3JhbmV3dy1zc28xITAf
+# BgNVBAMTGGVwcC10ZXN0LXNzby5jcmFuZXd3LmNvbTCCASIwDQYJKoZIhvcNAQEB
+# BQADggEPADCCAQoCggEBAI9SfiRoiPwrnAxgd431rs4q9cKRkT09d74CaClqj2QJ
+# p74I8sG7nPVOTUq6WpE+VV13NWToRIqgxLZMiIBiLm9OjUBU4Sc8wXXMHXa9ZJUg
+# Lt3YV+tEblAEe+mR+6zoBfxyuArk2QUsIwi/8HCRjqW/eKA/0ewAppRS1VxermQk
+# 5y1HYaHsl2xWl5d2jPz8UbNPcq974hkHI09+LMauP9Hz54OsVKwn36I6rcniPGlo
+# hsHcife34jewF+7NW7ILs+9X0TpcLnaGCLOx4CmDqTSpciAb8mQt+Er2bIgWR3D6
+# IK/SjWvpb6/8xssLk8rXZi/RnE7fhG16AAq5X+JQVzUCAwEAATANBgkqhkiG9w0B
+# AQQFAAOBgQCXV23LQ0afCLLF9Lzy0805TuvmGGnCFuE6Nn3flKWePuAtnMCVNqgA
+# whsHD1KsXnUNRFFQHWEEUY5WLIpNUjkvhc+ZDS8KufcYQJi9OpKA+R/vx7cIVhwV
+# 8RPdRpJBdkZ2Wl/qBrQhiAJP/rmi1eshf2CYyy9oqto3z2Pr7xhAsQ=="
+#   end
 
 
 
