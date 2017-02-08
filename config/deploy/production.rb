@@ -26,7 +26,7 @@ set :user, 'ubuntu'
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
-server 'ec2-35-154-154-107.ap-south-1.compute.amazonaws.com',
+server 'ec2-35-154-156-10.ap-south-1.compute.amazonaws.com',
        roles: [:web, :app, :db],
        port: fetch(:port),
        user: fetch(:user),
