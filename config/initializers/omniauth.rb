@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
-           :assertion_consumer_service_url     => "http://35.154.156.10/users/saml/auth",
-           :issuer                             => "http://35.154.156.10/",
+           :assertion_consumer_service_url     => "http://35.154.138.111/users/saml/auth",
+           :issuer                             => "http://35.154.138.111/",
            :idp_sso_target_url                 => "https://ssotest.craneww.com/IDBUS/CRANE/CRANE-IDP/SAML2/SSO/REDIR",
            :idp_sso_target_url_runtime_params  => {:original_request_param => :mapped_idp_param},
            :idp_cert                           => "-----BEGIN CERTIFICATE-----MIIC9DCCAl2gAwIBAgIBDTANBgkqhkiG9w0BAQQFADCBkzELMAkGA1UEBhMCVVMx
